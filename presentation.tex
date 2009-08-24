@@ -79,7 +79,7 @@
 \uncover<1->{  override def toString = "My name is %s and I'm %d years old.".format(name,age)}
 \uncover<1->{\}}
 \uncover<2->{}
-\uncover<2->{class Student(val school:String, val name:String, val age:Int) extends Person(name,age) \{}
+\uncover<2->{class Student(val school:String, name:String, age:Int) extends Person(name,age) \{}
 \uncover<3->{  override def toString = super.toString+" I go to %s.".format(school)}
 \uncover<3->{\}}
 \uncover<4->{}
@@ -99,7 +99,7 @@
 \uncover<1->{  override def toString = "My name is %s and I'm %d years old.".format(name,age)}
 \uncover<1->{\}}
 \uncover<1->{}
-\uncover<1->{class Student(val school:String, val name:String, val age:Int) extends Person(name,age) \{}
+\uncover<1->{class Student(val school:String, name:String, age:Int) extends Person(name,age) \{}
 \uncover<1->{  override def toString = super.toString+" I go to %s.".format(school)}
 \uncover<1->{\}}
 \uncover<2->{}
@@ -114,7 +114,7 @@
 \uncover<4->{val ferris = new Student("Shermer High", "Ferris Bueller", 17) with LaidBack with Cool}
 \uncover<5->{}
 \uncover<5->{println(ferris toString)}
-\uncover<5->{//"My name is Ferris Bueller and I'm 17 years old. I go to Shermer High. And I'm laid back. And I'm cool."}
+\uncover<5->{"My name is Ferris Bueller and I'm 17 years old. I go to Shermer High. And I'm laid back. And I'm cool."}
 \end{semiverbatim}
 }
 \end{frame} 
@@ -156,7 +156,7 @@
   \item<1-> Scala has first-class functions
   \item<2-> Many Collection classes provide convenience higher order functions: \tt\small{reduceLeft, foldLeft, filter, forall}
   \item<3-> Lots of functional stand-bys: \tt\small{head, tail}
-  \item<4-> Functional techniques help you avoid off-by one errors, temporary variables, and explicit loops
+  \item<4-> Functional techniques help you avoid off-by-one errors, temporary variables, and explicit loops
   \item<5-> Chained higher-order functions let you write common imperative for/if patterns concisely
 \end{itemize}
 \end{frame} 
@@ -164,21 +164,26 @@
 \begin{frame} 
 \frametitle{Functional Programming in Scala Examples}
 \begin{itemize}
-  \item<1-> Sum a list of Integers: \tt{List(1,5,3,2).reduceLeft((x,y) => x+y) (Int = 11)}
-  \item<2-> More concisely: \tt{List(1,5,3,2).reduceLeft(\_+\_) (Int = 11)}
-  \item<3-> Prune odd numbers: \tt{List(1,2,3,4).filter(x => x \% 2 == 0) (List[Int] = List(2,4))}
-  \item<4-> Prune odd numbers, get sum: \tt{List(1,2,3,4).filter(\_ \% 2 == 0).reduceLeft(\_+\_) (Int = 6)}
-  \item<5-> Or, in Scala 2.8: \tt{List(1,2,3,4).filter(\_ \% 2 == 0) sum (Int = 6)}
+  \item<1-> Sum a list of Integers:
+  \item<1-> \tt\small\textbf{List(1,5,3,2).reduceLeft((x,y) => x+y) (Int = 11)}
+  \item<2-> More concisely:
+  \item<2-> \tt\small\textbf{List(1,5,3,2).reduceLeft(\_+\_) (Int = 11)}
+  \item<3-> Prune odd numbers:
+  \item<3-> \tt\small\textbf{List(1,2,3,4).filter(x => x \% 2 == 0) (List[Int] = List(2,4))}
+  \item<4-> Prune odd numbers, get sum:
+  \item<4-> \tt\small\textbf{List(1,2,3,4).filter(\_ \% 2 == 0).reduceLeft(\_+\_) (Int = 6)}
+  \item<5-> Or, in Scala 2.8:
+  \item<5-> \tt\small\textbf{List(1,2,3,4).filter(\_ \% 2 == 0) sum (Int = 6)}
 \end{itemize}
 \end{frame} 
 
 \begin{frame} 
 \frametitle{Putting it All Together: a Simple Application}
 \begin{itemize}
-  \item<1-> Three languages, one application. C, Java, and Scala
-  \item<2-> Imperative, mostly imperative, and a mix of functional/imperative paradigms
+  \item<1-> A program that adds a list of numbers taken as a command line argument, in three languages 
+  \item<2-> Imperative (C), imperative/OO (Java), and OO/functional (Scala)
   \item<3-> \textbf{Warning: always use the right tool for the job!}
-  \item<4-> This is just a demonstration.
+  \item<3-> This is just a demonstration.
   \item<5-> Our program is supposed to take one argument, a comma-delimited list of integers to sum.
   \item<6-> Usage: \tt{./summer 1,2,3} should print 6
 \end{itemize}
