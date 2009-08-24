@@ -1,0 +1,11 @@
+digraph G {
+  "Person" [label="class\nPerson",shape=box];
+  "Student" [label="class\nStudent",shape=box];
+  "ferris" [shape=doublecircle,label="object\nferris"];
+  "LaidBack" [shape=circle,label="trait\nLaidBack"];
+  "Cool" [shape=circle,label="trait\nCool"];
+  "Person" -> "Student" [label="(extends)"];
+  "Student" -> "ferris" [label="(extends)"];
+  "LaidBack" -> "ferris" [style=dotted,label="(mixes in)"];
+  "Cool" -> "ferris" [style=dotted,label="(mixes in)"];
+}
