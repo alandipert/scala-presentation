@@ -167,7 +167,7 @@
   \item<1-> Sum a list of Integers: \tt{List(1,5,3,2).reduceLeft((x,y) => x+y) (Int = 11)}
   \item<2-> More concisely: \tt{List(1,5,3,2).reduceLeft(\_+\_) (Int = 11)}
   \item<3-> Prune odd numbers: \tt{List(1,2,3,4).filter(x => x \% 2 == 0) (List[Int] = List(2,4))}
-  \item<4-> Prune odd numbers, get sum: \tt{List(1,2,3,4).filter(x => x \% 2 == 0).reduceLeft(\_+\_) (Int = 6)}
+  \item<4-> Prune odd numbers, get sum: \tt{List(1,2,3,4).filter(\_ \% 2 == 0).reduceLeft(\_+\_) (Int = 6)}
 \end{itemize}
 \end{frame} 
 
