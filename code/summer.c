@@ -7,7 +7,7 @@ struct num_list {
   int *nums;
 } num_list;
 
-int get_sum(struct num_list *nlist) {
+int calc_sum(struct num_list *nlist) {
   int i, sum = 0;
   for(i = 0; i < nlist->size; i++) sum += nlist->nums[i];
   return sum;
@@ -26,7 +26,7 @@ struct num_list * convert_input(char *input) {
 
 int main(int argc, char **argv) {
   if(argc > 1) {
-    printf("%i\n", get_sum(convert_input(argv[1])));
+    printf("%i\n", calc_sum(convert_input(argv[1])));
   } else {
     fprintf(stderr, "Please provide a list of integers in format 1,2,3\n");
   }
