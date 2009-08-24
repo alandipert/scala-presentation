@@ -3,7 +3,7 @@ class Person(val name:String, val age:Int) {
 }
 
 class Student(val school:String, name:String, age:Int) extends Person(name,age) {
-  override def toString = super.toString+" I go to %s".format(school)
+  override def toString = super.toString+" I go to %s.".format(school)
 }
 
 trait Cool {
