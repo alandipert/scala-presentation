@@ -44,7 +44,7 @@
   \column{2.0in}
     \begin{itemize}
       \item<1-> Classes and objects similar to Java...
-      \item<2-> ...except "everything is an object."  No simple types like Java
+      \item<2-> ...except "everything is an object." - no primitive types like Java
       \item<3-> Automatic getters/setters (like :attr\_accessor in Ruby)
       \item<4-> "Singleton objects" instead of static methods in classes
       \item<5-> "Traits," behaviors mixed in with classes and objects, simplify multiple inheritance
@@ -57,18 +57,16 @@
 {\tt \tiny
 \begin{semiverbatim}
 \uncover<1->{//Person objects take the name 'n' and the age 'a' in the constructor}
-\uncover<1->{class Person(n:String, a:Int) \{}
+\uncover<1->{class Person(val name:String, val age:Int) \{}
 \uncover<2->{  //name and age are immutable instance values}
-\uncover<2->{  val name = n}
-\uncover<2->{  val age = a}
 \uncover<3->{  //Person provides its own toString method that returns something sensible}
 \uncover<3->{  override def toString = "My name is %s and I'm %d years old.".format(name,age)}
 \uncover<1->{\}}
 \uncover<4->{}
-\uncover<4->{val thePrez = new Person("Barrack Obama", 48)}
+\uncover<4->{val thePrez = new Person("Barack Obama", 48)}
 \uncover<5->{}
 \uncover<5->{println(thePrez toString)}
-\uncover<5->{//prints "My name is Barrack Obama and I'm 48 years old."}
+\uncover<5->{//prints "My name is Barack Obama and I'm 48 years old."}
 \end{semiverbatim}
 }
 \end{frame} 
@@ -77,14 +75,11 @@
 \frametitle{Inheritance in Scala}
 {\tt \tiny
 \begin{semiverbatim}
-\uncover<1->{class Person(n:String, a:Int) \{}
-\uncover<1->{  val name = n}
-\uncover<1->{  val age = a}
+\uncover<1->{class Person(val name:String, val age:Int) \{}
 \uncover<1->{  override def toString = "My name is %s and I'm %d years old.".format(name,age)}
 \uncover<1->{\}}
 \uncover<2->{}
-\uncover<2->{class Student(u:String, n:String, a:Int) extends Person(n,a) \{}
-\uncover<3->{  val school = u}
+\uncover<2->{class Student(val school:String, val name:String, val age:Int) extends Person(name,age) \{}
 \uncover<3->{  override def toString = super.toString+" I go to %s.".format(school)}
 \uncover<3->{\}}
 \uncover<4->{}
@@ -100,14 +95,11 @@
 \frametitle{Traits in Scala}
 {\tt \tiny
 \begin{semiverbatim}
-\uncover<1->{class Person(n:String, a:Int) \{}
-\uncover<1->{  val name = n}
-\uncover<1->{  val age = a}
+\uncover<1->{class Person(val name:String, val age:Int) \{}
 \uncover<1->{  override def toString = "My name is %s and I'm %d years old.".format(name,age)}
 \uncover<1->{\}}
 \uncover<1->{}
-\uncover<1->{class Student(u:String, n:String, a:Int) extends Person(n,a) \{}
-\uncover<1->{  val school = u}
+\uncover<1->{class Student(val school:String, val name:String, val age:Int) extends Person(name,age) \{}
 \uncover<1->{  override def toString = super.toString+" I go to %s.".format(school)}
 \uncover<1->{\}}
 \uncover<2->{}
@@ -152,7 +144,7 @@
       \item<1-> FP is the paradigm of avoiding state and mutability in code, "functions and data the same"
       \item<2-> Around practically since Lisp (1958), popular lately because of focus on concurrency
       \item<3-> Side-effect free functions and immutable data structures have definite advantages in many domains
-      \item<4-> On the JVM, FP alternatives are Clojure, Groovy
+      \item<4-> On the JVM, FP alternatives are Clojure, CAL
       \item<5-> In Java terms, anonymous inner classes on crack
     \end{itemize}
 \end{columns}
@@ -174,8 +166,8 @@
 \begin{itemize}
   \item<1-> Sum a list of Integers: \tt{List(1,5,3,2).reduceLeft((x,y) => x+y) (Int = 11)}
   \item<2-> More concisely: \tt{List(1,5,3,2).reduceLeft(\_+\_) (Int = 11)}
-  \item<3-> Prune odd numbers: \tt{List(1,2,3,4).filter(x => if (x\%2 == 0) true else false) (List[Int] = List(2,4))}
-  \item<4-> Prune odd numbers, get sum: \tt{List(1,2,3,4).filter(x => if (x\%2 == 0) true else false).reduceLeft(\_+\_) (Int = 6)}
+  \item<3-> Prune odd numbers: \tt{List(1,2,3,4).filter(x => x \% 2 == 0) (List[Int] = List(2,4))}
+  \item<4-> Prune odd numbers, get sum: \tt{List(1,2,3,4).filter(x => x \% 2 == 0).reduceLeft(\_+\_) (Int = 6)}
 \end{itemize}
 \end{frame} 
 
