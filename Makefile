@@ -4,11 +4,14 @@
 
 all: pdf
 
+hilight:
+	source-highlight code/* -flatexcolor
+
 dot:
 	dot -Tpdf -O graphics/*_dot
 
-pdf: dot
+pdf: clean dot hilight
 	pdflatex presentation.tex && open presentation.pdf
 
 clean:
-	rm -rf *.aux *.log *.nav *.vrb *.out *.pdf *.snm *.toc graphics/*.pdf
+	rm -rf *.aux *.log *.nav *.vrb *.out *.pdf *.snm *.toc graphics/*.pdf code/*.tex
