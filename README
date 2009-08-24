@@ -1,0 +1,10 @@
+This is a 50-something slide presentation introducing Scala.
+
+Dependencies:
+  dot
+  latex, pdflatex
+  beamer
+  GNU source-highlight
+
+To generate a pdf, type:
+  $ make
